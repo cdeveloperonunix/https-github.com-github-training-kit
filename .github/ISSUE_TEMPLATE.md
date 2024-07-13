@@ -5,6 +5,7 @@
 ### Extra detail
 
 <!-- Please include any additional details that may be helpful in understanding the issue. -->
+
 #### Screenshots
 
 <!-- If bug fix, please upload images of the error to better showcase the problem. -->
