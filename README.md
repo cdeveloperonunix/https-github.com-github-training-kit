@@ -1,3 +1,21 @@
+# O que é o Git?
+
+Git é um [sistema de controle de versões](https://pt.wikipedia.org/wiki/Sistema_de_controle_de_vers%C3%B5es) distribuído, usado principalmente no [desenvolvimento de software](https://pt.wikipedia.org/wiki/Desenvolvimento_de_software), mas pode ser usado para registrar o histórico de edições de qualquer tipo de arquivo (Exemplo: alguns livros digitais são disponibilizados no [GitHub](https://pt.wikipedia.org/wiki/GitHub) e escrito aos poucos publicamente). O Git foi inicialmente projetado e desenvolvido por [Linus Torvalds](https://pt.wikipedia.org/wiki/Linus_Torvalds) para o desenvolvimento do [kernel Linux](https://pt.wikipedia.org/wiki/Linux_(n%C3%BAcleo)), mas foi adotado por muitos outros projetos.
+
+
+# Boas práticas de versionamento com Git
+
+- Commits pequenos e frequentes: Realize commits com frequência para evitar grandes mudanças de uma só vez. Isso facilita a reversão e o rastreamento de problemas.
+- Mensagens claras de commit: Use mensagens de commit descritivas e significativas, indicando o que foi alterado e por quê. Evite termos genéricos como "ajustes" ou "corrigido".
+- Branches para funcionalidades: Crie branches para novas funcionalidades, correções de bugs ou experimentos. Isso permite que o trabalho seja isolado da branch principal (geralmente "main" ou "master").
+- Merges e pull requests: Ao finalizar o desenvolvimento de uma funcionalidade, faça merge com a branch principal usando um pull request. Isso permite revisão de código e colaboração antes de incorporar as mudanças.
+- Rebase em vez de merge (quando apropriado): Rebase pode ser usado para manter um histórico mais limpo, pois evita a criação de commits de merge extras. Contudo, ele deve ser utilizado com cuidado em projetos colaborativos.
+- Uso adequado de tags: Utilize tags para marcar versões específicas do projeto, como releases ou milestones importantes.
+- Resolução de conflitos: Ao fazer merge de branches, pode haver conflitos de código. Resolva-os imediatamente e com cuidado, garantindo que o código final funcione corretamente.
+- Uso de .gitignore: Configure o arquivo .gitignore para evitar que arquivos desnecessários (como arquivos temporários ou de build) sejam adicionados ao repositório.
+
+---
+
 # GitHub Training Kit
 
 Open source courseware from the GitHub Professional Services team.
