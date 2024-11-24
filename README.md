@@ -37,3 +37,8 @@ Code used to build and test the site as well as code samples on the site, if any
 This means you can use the content and code in this repository except for GitHub trademarks in your projects.
 
 When you contribute to this repository you are doing so under the above licenses.
+
+## A cool new section
+
+This section does not do anything at all, it was only added as an exercise for my degree.
+
