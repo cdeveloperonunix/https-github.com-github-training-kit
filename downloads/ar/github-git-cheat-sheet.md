@@ -1,118 +1,99 @@
----
 layout: cheat-sheet
 redirect_to: false
-title: <div dir="rtl"> برشامة أوامر Git لنظام GitHub</div>
-byline: <p dir="rtl"> أمر Git هو نظام تحكم بالنسخ الموزعة المفتوحة المصدر التي توظف أنشطة GitHub في الحواسيب الشخصية. هذه "البرشامة" تلخص تعليمات Git الأكثر استخداماً على سطر الأوامر كمرجع سري</p>
-leadingpath: ../../../
+title: مرجع أوامر Git من GitHub
+byline: Git هو نظام مفتوح المصدر للتحكم في الإصدارات الموزعة، يتيح إدارة الأنشطة على GitHub من جهازك. يلخص هذا المرجع الأوامر الأكثر شيوعًا لاستخدام Git عبر سطر الأوامر.
+leadingpath: ../../
 ---
 
 {% capture colOne %}
-<h2 dir="rtl"> تنصيب Git</h2>
-<p dir="rtl">نظام GitHub يوفر برنامج عميل لسطح المكتب يشمل واجهة مستخدم رسومية لنشاطات المستودعات الأكثر شيوعاً وتحديث نسخة سطر أوامر Git تلقائياً للحالات المتقدمة.</p>
+## تثبيت Git
 
-<h3 dir="rtl"> GitHub لنظام تشغيل وندوز</h3>
-<p dir="rtl"><a href="https://windows.github.com">windows.github.com</a></p>
+### GitHub Desktop
+[desktop.github.com](https://desktop.github.com)
 
-<h3 dir="rtl"> GitHub لنظام تشغيل ماك</h3>
-<p dir="rtl"><a href="https://mac.github.com">mac.github.com</a></p>
+### Git لجميع الأنظمة
+[git-scm.com](https://git-scm.com)
 
-<p dir="rtl">توزيعات Git لأنظمة لينكس وPosix متوفرة في موقع Git SCM الرسمي.</p>
+## إعداد الأدوات
+تهيئة معلومات المستخدم لجميع المستودعات المحلية:
 
-<h3 dir="rtl"> Git لكل أنظمة التشغيل</h3>
-<p dir="rtl"><a href="https://git-scm.com">git-scm.com</a></p>
+```$ git config --global user.name "[الاسم]"```
 
-<h2 dir="rtl"> إعادة تكوين الأدوات</h2>
-<p dir="rtl">إعداد معلومات المستخدم لجميع المستودعات المحلية</p>
+لتحديد الاسم الذي يتم إرفاقه مع عمليات الحفظ.
 
-<p align="right"><code align="right">$ git config --global user.name "[الاسم]"</code></p>
+```$ git config --global user.email "[البريد الإلكتروني]"```
 
-<p dir="rtl">إعداد الاسم المراد إدراجه في إجراءات تنفيذ أو "ارتكاب" التغييرات</p>
+لتحديد البريد الإلكتروني الذي يتم إرفاقه مع عمليات الحفظ.
 
-<p align="right"><code>$ git config --global user.email "[البريد الالكتروني]"</code></p>
-<p dir="rtl">إعداد البريد الالكتروني المراد إدراجه في إجراءات تنفيذ أو "ارتكاب" التغييرات</p>
+```$ git config --global color.ui auto```
 
+لتفعيل تلوين المخرجات في سطر الأوامر.
 
-<h2 dir="rtl"> صنع المستودعات</h2>
-<p dir="rtl">بدء مستودع جديد أو الحصول على مستودع موجود مسبقاً عن طريق وصلة</p>
+## الفروع Branches
 
+الفروع هي جزء أساسي من العمل مع Git. أي تغييرات تحفظها ستكون مرتبطة بالفرع الذي تعمل عليه حاليًا. استخدم `git status` لمعرفة الفرع الحالي.
 
-<p align="right"><code align="right">$ git init [اسم المشروع]</code></p>
+```$ git branch [اسم-الفرع]```
 
-<p dir="rtl">صنع مستودع جديد بالمسمى المعطى</p>
+لإنشاء فرع جديد.
 
+```$ git switch -c [اسم-الفرع]```
 
-<p align="right"><code>$ git clone [رابط المشروع]</code></p>
+للتبديل إلى فرع معين وتحديث مسار العمل.
 
-<p dir="rtl">تحميل مشروع بماضيه الشامل لكل النسخ الحالية والسابقة</p>
+```$ git merge [الفرع]```
+
+لدمج تاريخ فرع معين في الفرع الحالي. غالبًا يتم ذلك عبر طلبات السحب (Pull Requests).
+
+```$ git branch -d [اسم-الفرع]```
+
+لحذف فرع معين.
 
 {% endcapture %}
 <div class="col-md-6">
 {{ colOne | markdownify }}
 </div>
 
-
 {% capture colTwo %}
+## إنشاء المستودعات (Repositories)
 
-<h2 dir="rtl"> إحداث تغييرات</h2>
-<p dir="rtl">مراجعة التغييرات وتشكيل إجراء "ارتكاب" التغييرات</p>
+يمكن إنشاء مستودع جديد محليًا أو استنساخ مستودع موجود. إذا أنشأت مستودعًا محليًا، عليك دفعه (push) إلى GitHub لاحقًا.
 
+```$ git init```
 
-<p align="right"><code >$ git status</code></p>
+هذا الأمر يقوم بتحويل المجلد الذي تقوم بتنفيذ الأمر بداخله الى مستودع Git جديد، بعد استخدام هذا الأمر، عليك ربط المستودع المحلي بمستودع فارغ على GitHub باستخدام الامر التالي:
 
-<p dir="rtl">إدراج جميع الملفات الجديدة أو التي تم تغييرها وتنتظر أن يتم ارتكابها</p>
+```$ git remote add origin [رابط]```
 
+لتحديد المستودع البعيد الذي سيتم ربط المستودع المحلي به، من خلال تحديد الرابط للمستودع على GitHub.
 
-<p align="right"><code>$ git diff</code></p>
+```$ git clone [رابط]```
 
-<p dir="rtl">إظهار كل التغييرات في الملفات المتغيرة التي لم يتم إضافتها لقائمة الترحيل</p>
+لاستنساخ (تحميل) مستودع موجود على GitHub، بما في ذلك الملفات files والفروع branches والتعديلات commits.
 
+## ملف .gitignore
 
-<p align="right"><code>$ git add [اسم الملف]</code></p>
+لتجاهل بعض الملفات ومنع تتبعها بواسطة Git. عادةً يتم ذلك باستخدام ملف خاص يسمى `.gitignore`. يمكنك العثور على قوالب مفيدة لهذا الملف عبر الرابط: [github.com/github/gitignore](https://github.com/github/gitignore).
 
-<p dir="rtl">إضافة الملف لقائمة الترحيل للتحضير ليتم ارتكابها</p>
+## مزامنة التغييرات
 
+لمزامنة المستودع المحلي مع المستودع البعيد على GitHub:
 
-<p align="right"><code>$ git diff --staged</code></p>
+```$ git fetch```
 
-<p dir="rtl">إظهار كل التغييرات في الملفات المتغيرة في قائمة الترحيل والمختلفة عن الموجودة في المستودع حالياً</p>
+لتحميل جميع التغييرات من الفروع البعيدة.
 
+```$ git merge```
 
-<p align="right"><code >$ git reset [اسم الملف]</code></p>
+لدمج التغييرات من الفروع البعيدة في الفرع المحلي الحالي.
 
-<p dir="rtl">إزالة الملف من قائمة الترحيل مع الحفاظ على المحتوى الجديد دون تغيير.</p>
+```$ git push```
 
+لدفع جميع التعديلات المحلية local commits إلى GitHub.
 
-<p align="right"><code align="right">$ git commit -m"[تعليق توضيحي]"</code></p>
+```$ git pull```
 
-<p dir="rtl">ارتكاب التغييرات الموجودة في قائمة الترحيل وحفظها في ماضي النسخ</p>
-
-<h2 dir="rtl"> التغييرات الجماعية</h2>
-<p dir="rtl">تسمية مجموعة من التغييرات المرتكبة وجمع الجهود المكتملة</p>
-
-
-<p align="right"><code align="right">$ git branch</code></p>
-
-<p dir="rtl">إدراج قائمة بكل الفروع المحلية للمستودع الحالي</p>
-
-
-<p align="right"><code align="right">$ git branch [اسم الفرع]</code></p>
-
-<p dir="rtl">تكوين فرع جديد</p>
-
-
-<p align="right"><code align="right">$ git switch -c [اسم الفرع]</code></p>
-
-<p dir="rtl">التغيير إلى فرع معين وتحديث المسار الحالي</p>
-
-
-<p align="right"><code align="right">$ git merge [اسم الفرع]</code></p>
-
-<p dir="rtl">دمج الفرع الحالي بفرع آخر ماضي</p>
-
-
-<p align="right"><code align="right">$ git branch -d [اسم الفرع]</code></p>
-
-<p dir="rtl">حذف فرع معين</p>
+لتحديث الفرع المحلي الحالي بجميع التغييرات الجديدة من الفرع البعيد المقابل. `git pull` يجمع بين `git fetch` و `git merge`.
 
 {% endcapture %}
 <div class="col-md-6">
@@ -120,64 +101,48 @@ leadingpath: ../../../
 </div>
 <div class="clearfix"></div>
 
-
 {% capture colThree %}
-<h2 dir="rtl"> إزالة وتغيير الملفات</h2>
-<p dir="rtl">تحريك وإزالة الملفات التي تتم متابعة نسخها</p>
+## إجراء التغييرات
 
+استعراض وفحص تطور الملفات داخل المشروع:
 
-<p align="right"><code align="right">$ git rm [اسم الملف]</code></p>
+```$ git log```
 
-<p dir="rtl">حذف الملف وإضافة عملية الحذف لقائمة الترحيل</p>
+لعرض تاريخ الإصدارات للفرع الحالي.
 
+```$ git log --follow [ملف]```
 
-<p align="right"><code align="right">$ git rm --cached [اسم الملف]</code></p>
+لعرض تاريخ إصدار ملف معين، بما في ذلك التغييرات السابقة على الاسم (Renames) (يعمل لملف واحد فقط).
 
-<p dir="rtl">إلغاء عملية تتبع نسخ الملف مع الحفاظ على الملف محلياً (الملف موجود محليّاً لكنه لا يظهر على Github(</p>
+```$ git diff [فرع-أول]...[فرع-ثاني]```
 
+لعرض الاختلافات بين فرعين.
 
-<p align="right"><code align="right">$ git mv [اسم الملف الأصلي] [اسم الملف الجديد]</code></p>
+```$ git show [تعديل]```
 
-<p dir="rtl">تغيير اسم الملف والتحضير لارتكاب التغييرات</p>
+لعرض بيانات metadata وتغييرات المحتوى المرتبطة بالتعديل (Commit).
 
-<h2 dir="rtl"> قمع تتبع الملفات</h2>
-<p dir="rtl">استثناء الملفات والمجلدات المؤقتة</p>
+```$ git add [ملف]```
 
-<p align="right"><code align="right">
-*.log
-build/
-temp-*
-</code></p>
+لإعداد الملف للحفظ ضمن الإصدار الجديد.
 
-<p dir="rtl">استخدام ملف نصي بمسمى <code dir="ltr">.gitignore</code> يمنع تتبع الملفات والمجلدات الغير مرغوبة بتحديد أنماط تسمية هذه الملفات</p>
+```$ git commit -m "[رسالة وصفية]"```
 
+لحفظ التغييرات بشكل دائم في الإصدار.
 
-<p align="right"><code align="right">$ git ls-files --others --ignored --exclude-standard</code></p>
+## إعادة تنفيذ التعديلات
 
-<p dir="rtl">سرد قائمة بكل الملفات التي تم تجاهلها في المشروع الحالي</p>
+لإصلاح الأخطاء أو تعديل السجل:
 
-<h2 dir="rtl"> حفظ المتغيرات الصغيرة</h2>
-<p dir="rtl">التخزين الجانبي واستعادة المتغيرات غير المكتلمة</p>
+```$ git reset [تعديل]```
 
+لإلغاء جميع التعديلات بعد `[تعديل]` مع الحفاظ على التغييرات محليًا.
 
-<p align="right"><code align="right">$ git stash</code></p>
+```$ git reset --hard [تعديل]```
 
-<p dir="rtl">تخزين مؤقت لكل الملفات المتغيرة التي تتم متابعتها</p>
+لإلغاء جميع السجل والتغييرات والعودة إلى التعديل المحدد.
 
-
-<p align="right"><code align="right">$ git stash pop</code></p>
-
-<p dir="rtl">استعادة آخر الملفات المتغيرة التي تم تخزينها مؤخراً بشكل مؤقت</p>
-
-
-<p align="right"><code align="right">$ git stash list</code></p>
-
-<p dir="rtl">سرد قائمة بكل عمليات التخزين المؤقتة التي لم يتم استعادتها بعد</p>
-
-
-<p align="right"><code align="right">$ git stash drop</code></p>
-
-<p dir="rtl">التخلص من آخر الملفات المتغيرة التي تم تخزينها مؤخراً بشكل مؤقت</p>
+> **تحذير!** تغيير السجل قد يسبب مشاكل كبيرة، خاصة إذا تم دفع التعديلات إلى GitHub. كن حذرًا واطلب المساعدة إذا لزم الأمر عبر [github.community](https://github.community) أو دعم GitHub.
 
 {% endcapture %}
 <div class="col-md-6">
@@ -185,66 +150,20 @@ temp-*
 </div>
 
 {% capture colFour %}
-<h2 dir="rtl"> مراجعة ماضي التغييرات</h2>
-<p dir="rtl">تصفح وتفحص تطور ملفات المشروع</p>
+## المصطلحات
 
-
-<p align="right"><code align="right">$ git log</code></p>
-
-<p dir="rtl">سرد قائمة بماضي النسخ للفرع الحالي</p>
-
-
-<p align="right"><code align="right">$ git log --follow [اسم الملف]</code></p>
-
-<p dir="rtl">سرد قائمة بماضي نسخ ملف معين (يشمل تغيير الاسم)</p>
-
-
-<p align="right"><code align="right">$ git diff [الفرع الثاني]...[الفرع الأول]</code></p>
-
-<p dir="rtl">عرض اختلافات المحتوى من فرع لآخر</p>
-
-
-<p align="right"><code align="right">$ git show [عملية ارتكاب]</code></p>
-
-<p dir="rtl">عرض البيانات الوصفية وتغييرات المحتوى لعملية ارتكاب معينة</p>
-
-<h2 dir="rtl"> التراجع عن عمليات الارتكاب</h2>
-<p dir="rtl">مسح الأخطاء واستبدال جزء من الماضي</p>
-
-
-<p align="right"><code align="right">$ git reset [عملية ارتكاب]</code></p>
-
-<p dir="rtl">إلغاء جميع عمليات ارتكاب التغييرات بعد <code>[عملية ارتكاب]</code> مع الحفاظ على التغييرات محليّاً</p>
-
-
-<p align="right"><code align="right">$ git reset --hard [عملية ارتكاب]</code></p>
-
-<p dir="rtl">إلغاء جميع عمليات ارتكاب التغييرات واستعادة الملفات إلى وضعها السابق وقت عملية ارتكاب التغييرات</p>
-
-<h2 dir="rtl"> مزامنة التغييرات</h2>
-<p dir="rtl">تسجيل علامة مرجعية للمستودع وتبادل ماضي النسخ</p>
-
-
-<p align="right"><code align="right">$ git fetch [علامة مرجعية]</code></p>
-
-<p dir="rtl">تحميل كل ماضي المستودع من العلامة المرجعية</p>
-
-
-<p align="right"><code align="right">$ git merge [فرع]/[علامة مرجعية]</code></p>
-
-<p dir="rtl">دمج فرع لعلامة مرجعية مع الفرع المحلي الحالي</p>
-
-
-<p align="right"><code align="right">$ git push [alias] [فرع]</code></p>
-
-<p dir="rtl">رفع كل عمليات ارتكاب التغيرات للفرع المحلي على Github</p>
-
-
-<p align="right"><code align="right">$ git pull</code></p>
-
-<p dir="rtl">تحميل ماضي العلامة المرجعية ودمج التغييرات</p>
+- **git**: نظام مفتوح المصدر لإدارة الإصدارات الموزعة.
+- **GitHub**: منصة لاستضافة التعاون على مستودعات Git.
+- **commit (تعديل)**: كائن Git يمثل لقطة من المستودع بالكامل.
+- **branch (فرع)**: مؤشر متحرك خفيف يشير إلى تعديل.
+- **clone (استنساخ)**: نسخة محلية من مستودع يشمل جميع الفروع والتعديلات.
+- **remote (بعيد)**: مستودع مشترك على GitHub لتبادل التغييرات بين الأعضاء.
+- **fork (نسخة)**: نسخة من مستودع على GitHub يملكها مستخدم آخر.
+- **pull request (طلب سحب)**: مساحة لمقارنة ومناقشة الفروقات بين الفروع.
+- **HEAD**: يشير إلى مسار العمل الحالي. يمكن تحريكه بين الفروع أو التعديلات باستخدام `git switch`.
 
 {% endcapture %}
 <div class="col-md-6">
 {{ colFour | markdownify }}
 </div>
+<div class="clearfix"></div>
